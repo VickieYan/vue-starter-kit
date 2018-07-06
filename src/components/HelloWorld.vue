@@ -82,9 +82,9 @@
     </ul>
   </div>
 </template>
-
+`
 <script>
-import { banner as bannerURL } from ''
+// import { banner as bannerURL } from ''
 export default {
   name: 'HelloWorld',
   data () {
@@ -93,7 +93,7 @@ export default {
     }
   },
   mounted() {
-
+    
   }
 }
 </script>

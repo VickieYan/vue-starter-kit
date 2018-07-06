@@ -1,1 +1,3 @@
-export const baseURL = 'http://127.0.0.1:9050'
+export default{
+    baseURL: 'http://127.0.0.1:9050'
+}
