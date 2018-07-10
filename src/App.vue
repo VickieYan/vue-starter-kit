@@ -1,7 +1,12 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+  <div id="app" v-cloak>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
+    <p>
+      <router-link to="/">HelloWorld</router-link>
+      <router-link to="/counter">Counter</router-link>
+    </p>
   </div>
 </template>
 
@@ -21,7 +26,10 @@ export default {
   margin-top: 60px;
 }
 
-// 和仲哲大佬学一波sass
+[v-cloak] {
+  display: none;
+}
+
 @mixin initBasicPaddingMarginStyle($interval: 5, $start: 5, $cnt: 4) {
   $posMap: (
     'l': 'left',
