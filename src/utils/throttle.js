@@ -1,4 +1,4 @@
-export const throttle = (func, threshold = 100) => {
+const throttle = (func, threshold = 100) => {
     let last 
     let deferTimer
     return function(...args) {
@@ -15,3 +15,5 @@ export const throttle = (func, threshold = 100) => {
         }
     }
 }
+
+export default throttle
