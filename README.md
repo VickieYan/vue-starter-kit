@@ -1,4 +1,4 @@
-# Vue-starter-kit
+# vue-starter-kit
 ## 使用方法
 ### 安装依赖
 ```
@@ -10,7 +10,7 @@ yarn start
 ```
 ## 介绍
 ### 功能
-* Sass
+* Sass
 
 ### 工具包
 * throttle
