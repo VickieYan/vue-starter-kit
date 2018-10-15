@@ -4,8 +4,8 @@
       <router-view/>
     </transition>
     <p>
-      <router-link to="/">HelloWorld</router-link>
-      <router-link to="/counter">Counter</router-link>
+      <router-link to="/demo1">Demo1</router-link>
+      <router-link to="/demo2">Demo2</router-link>
     </p>
   </div>
 </template>

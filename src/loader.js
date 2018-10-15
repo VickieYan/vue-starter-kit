@@ -65,8 +65,8 @@ class Loader {
                 })
             }
         })
-        this.$_vk.axios.all = (list) => Promise.all(list)
-        this.$_vk.axios.get('/user').then(res => console.log(res))
+        // this.$_vk.axios.all = (list) => Promise.all(list)
+        // this.$_vk.axios.get('/user').then(res => console.log(res))
     }
     
 

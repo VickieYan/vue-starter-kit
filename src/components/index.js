@@ -1,5 +1,7 @@
-import HelloWorld from './HelloWorld'
+import Demo1 from './demo/Demo1'
+import Demo2 from './demo/Demo2'
 
 export {
-    HelloWorld,
+    Demo1,
+    Demo2
 }
