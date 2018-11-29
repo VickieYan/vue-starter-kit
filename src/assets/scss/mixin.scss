@@ -1,0 +1,108 @@
+/*清浮动*/
+@mixin clearfix() {
+  &:before,
+  &:after {
+      content: "";
+      display: table;
+  }
+  &:after {
+      clear: both;
+  }
+}
+
+/*单行文本溢出省略*/
+@mixin text-ellipsis-singleLine () {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/*多行文本溢出省略*/
+@mixin text-ellipsis-multiLine ($line) {
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+/*定位设置位置*/
+@mixin abs-pos ($top: auto, $right: auto, $bottom: auto, $left: auto) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/*滚动区域*/
+@mixin scroll-view() {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*清除input默认样式*/
+@mixin clear-input() {
+  background:none;  
+	outline:none;  
+  border:0px;
+}
+
+/*input的placeholder样式*/
+@mixin placeholder($color) {
+  ::-webkit-input-placeholder { /* WebKit browsers */
+    color: $color;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: $color;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: $color;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: $color;
+  }
+}
+
+@mixin initBasicPaddingMarginStyle($interval: 5, $start: 5, $cnt: 4) {
+  $posMap: (
+    'l': 'left',
+    'r': 'right',
+    't': 'top',
+    'b': 'bottom'
+  );
+
+  @for $i from 0 to $cnt - 1 {
+    $current: $start + $interval * $i;
+
+    .p#{$current} {
+      padding: $current + px
+    }
+
+    .m#{$current} {
+      padding: $current + px
+    }
+
+    @each $k, $v in $posMap {
+      .p#{$k}#{$current} {
+        padding-#{$v}: $current + px
+      }
+
+      .m#{$k}#{$current} {
+        padding-#{$v}: $current + px
+      }
+    }
+  }
+}
+
+@mixin initBasicFontSize($interval: 2, $start: 12, $cnt: 8) {
+  @for $i from 0 to $cnt - 1 {
+    $current: $start + $interval * $i;
+    .fs#{$current} {
+      font-size: $current + px
+    }
+  }
+}
