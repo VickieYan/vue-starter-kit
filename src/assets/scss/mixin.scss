@@ -47,7 +47,7 @@
 /*清除input默认样式*/
 @mixin clear-input() {
   background:none;  
-	outline:none;  
+  outline:none;  
   border:0px;
 }
 
@@ -67,42 +67,13 @@
   }
 }
 
-@mixin initBasicPaddingMarginStyle($interval: 5, $start: 5, $cnt: 4) {
-  $posMap: (
-    'l': 'left',
-    'r': 'right',
-    't': 'top',
-    'b': 'bottom'
-  );
-
-  @for $i from 0 to $cnt - 1 {
-    $current: $start + $interval * $i;
-
-    .p#{$current} {
-      padding: $current + px
-    }
-
-    .m#{$current} {
-      padding: $current + px
-    }
-
-    @each $k, $v in $posMap {
-      .p#{$k}#{$current} {
-        padding-#{$v}: $current + px
-      }
-
-      .m#{$k}#{$current} {
-        padding-#{$v}: $current + px
-      }
-    }
-  }
+/*ios平滑滚动*/
+@mixin overflow-x-scroll() {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
-@mixin initBasicFontSize($interval: 2, $start: 12, $cnt: 8) {
-  @for $i from 0 to $cnt - 1 {
-    $current: $start + $interval * $i;
-    .fs#{$current} {
-      font-size: $current + px
-    }
-  }
+@mixin overflow-y-scroll() {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
