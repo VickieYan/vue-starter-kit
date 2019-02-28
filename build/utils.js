@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+const glob = require("glob")
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
@@ -98,4 +99,25 @@ exports.createNotifierCallback = () => {
       icon: path.join(__dirname, 'logo.png')
     })
   }
+}
+
+exports.createEntry = () => {
+  const result = {}
+    let files = []
+    const entries = process.env.ENTRY.split(',')
+    entries.forEach(entry => {
+      const entryPath = path.join(path.join(__dirname, '../src/pages'), entry, '**/main.js')
+      files = [...files, ...glob.sync(entryPath)]
+      files.forEach(file => {
+        result[`${file}`] = 
+          process.env.NODE_ENV === 'development'?
+          [
+            file,
+            'webpack/hot/dev-server',
+            `webpack-dev-server/client?http://localhost:${config['dev'].port}/`
+          ]:
+          file
+      })
+    })
+    return result
 }

@@ -1,42 +1,29 @@
 'use strict'
+const fs = require('fs')
+const path = require('path')
+
+const fileNames = fs.readdirSync(path.join(__dirname, './src/pages/'))
+const dirs = fileNames.filter(fileName => {
+  const stat = fs.lstatSync(path.join(__dirname, './src/pages/' + fileName))
+  return stat.isDirectory()
+})
 
 module.exports = {
   types: [
-    { value: 'feat', name: 'feat:     新特性' },
-    { value: 'fix', name: 'fix:      bug 修复' },
-    { value: 'docs', name: 'docs:     文档相关' },
-    { value: 'style', name: 'style:    格式等无关代码意义的修改' },
-    { value: 'refactor', name: 'refactor: 重构' },
-    { value: 'build', name: 'build:    构建相关' },
-    { value: 'perf', name: 'perf:     性能提升' },
-    { value: 'test', name: 'test:     增加测试用例' },
-    { value: 'revert', name: 'revert:   回退' },
-    { value: 'WIP', name: 'WIP:      还在开发，待续' },
+    { value: 'WIP', name: '日常开发' },
+    { value: 'fix', name: '修复bug' },
+    { value: 'docs', name: '修改文档' },
+    { value: 'style', name: '修改格式' },
+    { value: 'refactor', name: '代码重构' },
   ],
-  scopes: [
-    { name: '公共' },
-    { name: 'kol红包', page: 'redpacket' },
-    { name: '预约游记', page: 'reserve_note' },
-    { name: '小组官方帖子', page: 'group_intro' },
-    { name: '蜂窝策划', page: 'honeycomb' },
-    { name: '答题大赛第一期', page: 'dt_destination' },
-    { name: '答题大赛·第二期', page: 'find_traveler' },
-    { name: '超赞答主', page: 'fabulous_answerer' },
-    { name: '答题跳转小页面', page: 'activity_qList' },
-    { name: '年终盘点', page: 'year_end_inventory' },
-    { name: '台历活动', page: 'calendar2019' },
-  ],
+  scopes: dirs,
   messages: {
     type: '请选择本次提交的类型(必选):',
     scope: '\n选择本次修改的模块(必选):',
-    customScope: 'Denote the SCOPE of this change:',
     subject: '本次修改简要说明(必填):\n',
     body: '详细说明，用 "|" 来表示换行(非必填):\n',
-    breaking: '重大改动点(非必填):\n',
-    footer: '本次提交需要关闭的 issue(非必填)，比如: #31, #34:\n',
     confirmCommit: '确认以上信息咩 ^__^?',
   },
   allowCustomScopes: false,
-  allowBreakingChanges: ['feat', 'fix', 'refactor'],
   subjectLimit: 100,
 }
